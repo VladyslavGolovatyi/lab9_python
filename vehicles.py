@@ -3,9 +3,9 @@ class Vehicle:
         self.average_speed_in_km_per_hour = average_speed_in_km_per_hour
         self.number_of_passengers = number_of_passengers
 
-    def print_info(self):
-        print("Average speed = {} km/h".format(self.average_speed_in_km_per_hour))
-        print("Number of passengers: {}".format(self.number_of_passengers))
+    def __str__(self):
+        return "Average speed = {} km/h".format(self.average_speed_in_km_per_hour) + \
+               "\nNumber of passengers: {}".format(self.number_of_passengers)
 
 
 class Car(Vehicle):
@@ -14,10 +14,8 @@ class Car(Vehicle):
         self.car_type = car_type
         self.car_model = car_model
 
-    def print_info(self):
-        super().print_info()
-        print("Type: {}".format(self.car_type))
-        print("Model: {}".format(self.car_model))
+    def __str__(self):
+        return super().__str__() + "\nType: {}".format(self.car_type) + "\nModel: {}".format(self.car_model)
 
 
 class Bus(Vehicle):
@@ -25,13 +23,13 @@ class Bus(Vehicle):
         super().__init__(average_speed_in_km_per_hour, number_of_passengers)
         self.is_adapted_for_disabled = is_adapted_for_disabled
 
-    def print_info(self):
-        super().print_info()
+    def __str__(self):
+        res = super().__str__()
         if self.is_adapted_for_disabled:
             s = ""
         else:
             s = "NOT "
-        print("Bus is {}adapted for disabled".format(s))
+        return res + "\nBus is {}adapted for disabled".format(s)
 
 
 class Plane(Vehicle):
@@ -39,9 +37,8 @@ class Plane(Vehicle):
         super().__init__(average_speed_in_km_per_hour, number_of_passengers)
         self.maximum_flight_altitude_in_metres = maximum_flight_altitude_in_metres
 
-    def print_info(self):
-        super().print_info()
-        print("Maximum flight attitude = {} metres".format(self.maximum_flight_altitude_in_metres))
+    def __str__(self):
+        return super().__str__() + "\nMaximum flight attitude = {} metres".format(self.maximum_flight_altitude_in_metres)
 
 
 class Trolleybus(Vehicle):
@@ -49,9 +46,8 @@ class Trolleybus(Vehicle):
         super().__init__(average_speed_in_km_per_hour, number_of_passengers)
         self.number_of_wheels = number_of_wheels
 
-    def print_info(self):
-        super().print_info()
-        print("Trolleybus have {} wheels".format(self.number_of_wheels))
+    def __str__(self):
+        return super().__str__() + "\nTrolleybus have {} wheels".format(self.number_of_wheels)
 
 
 class Tram(Vehicle):
@@ -59,6 +55,5 @@ class Tram(Vehicle):
         super().__init__(average_speed_in_km_per_hour, number_of_passengers)
         self.manufacture_year = manufacture_year
 
-    def print_info(self):
-        super().print_info()
-        print("Tram was manufactured in {} year".format(self.manufacture_year))
+    def __str__(self):
+        return super().__str__() + "\nTram was manufactured in {} year".format(self.manufacture_year)
